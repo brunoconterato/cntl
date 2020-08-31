@@ -1,0 +1,60 @@
+{
+  "months": [
+    {
+      "id": 0,
+      "name": "Setembro",
+      "billings": [
+        {
+          "id": 0,
+          "description": "Almoço restaurante",
+          "type": "Alimentação",
+          "value": 26.0,
+          "refundable": false,
+          "date": "14/08/2020",
+          "branch": "Contele Filial de Santos - SP",
+          "image": "../server/billing.png"
+        },
+        {
+          "id": 1,
+          "description": "Almoço restaurante",
+          "type": "Alimentação",
+          "value": 26.0,
+          "refundable": true,
+          "date": "20/08/2020",
+          "branch": "Contele Filial de Santos - SP",
+          "image": "../server/billing.png"
+        },
+        {
+          "id": 2,
+          "description": "Almoço restaurante",
+          "type": "Alimentação",
+          "value": 26.0,
+          "refundable": false,
+          "date": "22/08/2020",
+          "branch": "Contele Filial de Santos - SP",
+          "image": "../server/billing.png"
+        },
+        {
+          "id": 3,
+          "description": "Almoço restaurante",
+          "type": "Alimentação",
+          "value": 326.0,
+          "refundable": true,
+          "date": "22/08/2020",
+          "branch": "Contele Filial de Santos - SP",
+          "image": "../server/billing.png"
+        },
+        {
+          "id": 4,
+          "description": "Almoço restaurante",
+          "type": "Alimentação",
+          "value": 26.0,
+          "refundable": true,
+          "date": "14/08/2020",
+          "branch": "Contele Filial de Santos - SP",
+          "image": "../server/billing.png"
+        }
+      ]
+    }
+  ]
+}
