@@ -31,7 +31,7 @@ const MonthScreen = () => {
       }
       mapByTitle[date].push(b);
     });
-    dates = dates.sort();
+    dates = dates.sort((a, b) => moment(a) - moment(b));
     for (let i = 0; i < dates.length; i++) {
       config.push({
         title: dates[i],
@@ -53,8 +53,8 @@ const MonthScreen = () => {
 
   const SectionHeader = ({section: {title}}) => (
     <View style={styles.listHeaderContainer}>
-      <Text style={styles.header}>{getDayText(title)}</Text>
-      <Text style={styles.header}>{getWeekDayText(title)}</Text>
+      <Text style={styles.listHeaderDay}>{getDayText(title)}</Text>
+      <Text style={styles.listHeaderWeekDay}>{getWeekDayText(title)}</Text>
     </View>
   );
 
@@ -67,7 +67,10 @@ const MonthScreen = () => {
   const Footer = () => (
     <View style={styles.footerContainer}>
       <Text style={styles.footerTotal}>TOTAL</Text>
-      <Text style={styles.footerValue}>490</Text>
+      <Text>
+        <Text style={styles.footerMoneyValue}>R$</Text>
+        <Text style={styles.footerValue}>490,00</Text>
+      </Text>
     </View>
   );
 
@@ -77,6 +80,7 @@ const MonthScreen = () => {
         contentContainerStyle={{
           // backgroundColor: 'red',
           flex: 1,
+          // backgroundColor: '#f6f8fb',
         }}
         sections={sections}
         keyExtractor={(item) => String(item.id)}
