@@ -21,3 +21,23 @@ export const goToMonthScreen = () => {
     },
   });
 };
+
+export const goToBillingDetailsScreen = (billing: Billing, componentId) => {
+  return Navigation.push(componentId, {
+    component: {
+      name: appScreens.billingDetailsScreen,
+      passProps: {
+        billing,
+      },
+      options: {
+        topBar: {
+          visible: true,
+          title: 'Conta',
+          backButton: {
+            visible: true,
+          },
+        },
+      },
+    },
+  });
+};

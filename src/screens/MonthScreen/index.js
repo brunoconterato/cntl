@@ -9,7 +9,7 @@ import 'moment/locale/pt-br';
 
 moment.locale('pt-br');
 
-const MonthScreen = () => {
+const MonthScreen = ({componentId}) => {
   const dispatch = useDispatch();
   const {data}: {data: Month} = useSelector((state) => state.month);
   React.useEffect(() => {
@@ -89,7 +89,9 @@ const MonthScreen = () => {
         }}
         sections={sections}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({item}) => <BillingCard billing={item} />}
+        renderItem={({item}) => (
+          <BillingCard billing={item} componentId={componentId} />
+        )}
         renderSectionHeader={SectionHeader}
         ListHeaderComponent={Header}
         // ListFooterComponent={Footer}

@@ -1,11 +1,13 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import {goToBillingDetailsScreen} from '../../navigation/stack';
 
 const BillingCard = ({componentId, billing}: {billing: Billing}) => {
-  console.log('Billing', billing);
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => goToBillingDetailsScreen(billing, componentId)}>
       <View style={styles.infoView}>
         <Text
           style={{
@@ -42,7 +44,7 @@ const BillingCard = ({componentId, billing}: {billing: Billing}) => {
         />
         <Text>{billing.value.toFixed(2).replace('.', ',')}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
