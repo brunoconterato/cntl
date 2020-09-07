@@ -10,7 +10,7 @@ function* getRequest({payload: {id}}) {
     // if (response.status !== 200) {
     //   throw response;
     // }
-    yield put(Creators.getSuccess({data: db}));
+    yield put(Creators.getSuccess({data: db?.months[id] || {}}));
   } catch (error) {
     console.log(error);
     yield put(Creators.getFailure('Houve um erro'));
