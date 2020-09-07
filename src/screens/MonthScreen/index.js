@@ -5,7 +5,9 @@ import {Creators} from '../../store/ducks/month';
 import styles from './styles';
 import BillingCard from '../../components/BillingCard';
 import moment from 'moment';
+import 'moment/locale/pt-br';
 
+moment.locale('pt-br');
 
 const MonthScreen = () => {
   const dispatch = useDispatch();
@@ -41,20 +43,49 @@ const MonthScreen = () => {
 
   React.useEffect(formatSection, [data]);
 
+  const getDayText = (date) => {
+    return moment(date).format('DD');
+  };
+
+  const getWeekDayText = (date) => {
+    return moment(date).format('dddd').split('-')[0].toUpperCase();
+  };
+
+  const SectionHeader = ({section: {title}}) => (
+    <View style={styles.listHeaderContainer}>
+      <Text style={styles.header}>{getDayText(title)}</Text>
+      <Text style={styles.header}>{getWeekDayText(title)}</Text>
+    </View>
+  );
+
+  const Header = () => (
+    <View style={styles.headerContainer}>
+      <Text style={styles.title}>{data?.name}</Text>
+    </View>
+  );
+
+  const Footer = () => (
+    <View style={styles.footerContainer}>
+      <Text style={styles.footerTotal}>TOTAL</Text>
+      <Text style={styles.footerValue}>490</Text>
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
+        contentContainerStyle={{
+          // backgroundColor: 'red',
+          flex: 1,
+        }}
         sections={sections}
         keyExtractor={(item) => String(item.id)}
         renderItem={({item}) => <BillingCard billing={item} />}
-        renderSectionHeader={({section: {title}}) => (
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>{moment(title).format('DD')}</Text>
-            <Text style={styles.header}>{moment(title).isoWeekday()}</Text>
-          </View>
-        )}
-        ListHeaderComponent={(item) => <Text>{item.name}</Text>}
+        renderSectionHeader={SectionHeader}
+        ListHeaderComponent={Header}
+        // ListFooterComponent={Footer}
       />
+      <Footer />
     </SafeAreaView>
   );
 };
