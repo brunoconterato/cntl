@@ -17,12 +17,13 @@ const MonthScreen = () => {
   }, []);
 
   const [sections, setSections] = React.useState([]);
+  const [total, setTotal] = React.useState(0);
 
   const formatSection = () => {
     const config = [];
     const mapByTitle = {};
     let dates = [];
-    config.push();
+    let totalValue = 0.0;
     data?.billings?.map((b) => {
       const date = moment(b.date, 'DD/MM/YY');
       if (!mapByTitle[date]) {
@@ -30,6 +31,7 @@ const MonthScreen = () => {
         dates.push(date);
       }
       mapByTitle[date].push(b);
+      totalValue += b.value;
     });
     dates = dates.sort((a, b) => moment(a) - moment(b));
     for (let i = 0; i < dates.length; i++) {
@@ -39,6 +41,7 @@ const MonthScreen = () => {
       });
     }
     setSections(config);
+    setTotal(totalValue);
   };
 
   React.useEffect(formatSection, [data]);
@@ -68,8 +71,10 @@ const MonthScreen = () => {
     <View style={styles.footerContainer}>
       <Text style={styles.footerTotal}>TOTAL</Text>
       <Text>
-        <Text style={styles.footerMoneyValue}>R$</Text>
-        <Text style={styles.footerValue}>490,00</Text>
+        <Text style={styles.footerMoneyValue}>R$ </Text>
+        <Text style={styles.footerValue}>
+          {total.toFixed(2).replace('.', ',')}
+        </Text>
       </Text>
     </View>
   );

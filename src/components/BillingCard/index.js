@@ -40,7 +40,7 @@ const BillingCard = ({componentId, billing}: {billing: Billing}) => {
               : require('../../../assets/money_gray.png')
           }
         />
-        <Text>{billing.value.toFixed(2)}</Text>
+        <Text>{billing.value.toFixed(2).replace('.', ',')}</Text>
       </View>
     </View>
   );
