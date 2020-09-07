@@ -1,9 +1,11 @@
-import axios from 'axios';
+import {create} from 'apisauce';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:3000/',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'},
+const instance = create({
+  baseURL: 'http://localhost:3000',
+  // headers: {
+  //   'content-type': 'application/x-www-form-urlencoded',
+  //   Accept: 'application/json',
+  // },
 });
 
 export default instance;

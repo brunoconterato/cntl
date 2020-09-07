@@ -1,10 +1,18 @@
 import React from 'react';
 import {Text} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {Creators} from '../../store/ducks/month';
 
 const MonthScreen = () => {
+  const dispatch = useDispatch();
   const {data} = useSelector((state) => state.month);
-  console.log(data);
+  React.useEffect(() => {
+    dispatch(Creators.getRequest({id: 0}));
+  }, []);
+
+  React.useEffect(() => {
+    console.log('Month data updated', data);
+  }, [data]);
 
   return <Text>Month Screen</Text>;
 };
