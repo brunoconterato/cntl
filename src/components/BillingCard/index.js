@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {goToBillingDetailsScreen} from '../../navigation/stack';
+import { formatPrice } from '../../utils/priceformatter';
 
 const BillingCard = ({componentId, billing}: {billing: Billing}) => {
   return (
@@ -42,7 +43,7 @@ const BillingCard = ({componentId, billing}: {billing: Billing}) => {
               : require('../../../assets/money_gray.png')
           }
         />
-        <Text>{billing.value.toFixed(2).replace('.', ',')}</Text>
+        <Text>{formatPrice(billing.value)}</Text>
       </View>
     </TouchableOpacity>
   );

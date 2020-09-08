@@ -32,9 +32,12 @@ export const goToBillingDetailsScreen = (billing: Billing, componentId) => {
       options: {
         topBar: {
           visible: true,
-          title: 'Conta',
           backButton: {
             visible: true,
+            color: '#566475',
+          },
+          background: {
+            color: '#dce4f0',
           },
         },
       },

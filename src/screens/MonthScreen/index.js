@@ -6,6 +6,7 @@ import styles from './styles';
 import BillingCard from '../../components/BillingCard';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import {formatPrice} from '../../utils/priceformatter';
 
 moment.locale('pt-br');
 
@@ -72,9 +73,7 @@ const MonthScreen = ({componentId}) => {
       <Text style={styles.footerTotal}>TOTAL</Text>
       <Text>
         <Text style={styles.footerMoneyValue}>R$ </Text>
-        <Text style={styles.footerValue}>
-          {total.toFixed(2).replace('.', ',')}
-        </Text>
+        <Text style={styles.footerValue}>{formatPrice(total)}</Text>
       </Text>
     </View>
   );
